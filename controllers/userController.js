@@ -51,9 +51,33 @@ const postUserSignup = async (req, res, next) => {
       return res.status(500).send("Internal Server Error");
     }
   };
+
+  const postUserLogin = async (req, res, next) => {
+    try {
+      const email = req.body.loginEmail;
+      const password = req.body.loginPassword;
+  
+      const user = await User.findOne({ where: { email: email } });
+      if (!user) {
+        return res.status(404).json({ message: "User does not exist" });
+      }
+  
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
+        return res.status(401).json({ message: "Password incorrect" });
+      }
+  
+      const token = generateAccessToken(user.id, user.email);
+      return res.status(200).json({ message: "Login successful", token: token });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
   
 
 module.exports = {
     postUserSignup,
-    getLoginPage
+    getLoginPage,
+    postUserLogin
 };
