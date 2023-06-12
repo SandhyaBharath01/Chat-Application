@@ -28,7 +28,7 @@ const postUserSignup = async (req, res, next) => {
         return res
           .status(409)
           .send(
-            `<script>alert('This email is already taken. Please choose another one.'); window.location.href='/'</script>`
+            `<script>alert('This email is already taken. Please Login.'); window.location.href='/'</script>`
           );
       }
   

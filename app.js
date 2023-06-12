@@ -7,7 +7,11 @@ const fs = require("fs");
 
 
 const cors = require("cors");
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET","POST"],
+  credentials: true
+}));
 
 const dotenv = require("dotenv");
 dotenv.config();
