@@ -19,15 +19,19 @@ dotenv.config();
 const sequelize = require("./util/database");
 
 const userRouter = require("./router/userRouter");
+const homePageRouter = require("./router/homePageRouter");
 
 const User = require("./models/userModel");
 
 app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/", userRouter);
 app.use("/user", userRouter);
+
+app.use("/homePage", homePageRouter);
 
 sequelize
   .sync()

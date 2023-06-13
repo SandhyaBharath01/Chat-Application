@@ -68,12 +68,14 @@ const postUserSignup = async (req, res, next) => {
       }
   
       const token = generateAccessToken(user.id, user.email);
-      return res.status(200).json({ message: "Login successful", token: token });
+      res.status(200).json({ message: "Login successful", token: token });
+      res.sendFile(path.join(__dirname, "../", "public", "views", "homePage.html")); // Send the homePage.html
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: "Internal Server Error" });
     }
   };
+  
   
 
 module.exports = {
