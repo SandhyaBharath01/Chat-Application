@@ -5,6 +5,6 @@ const userAuthentication = require("../middleware/auth");
 
 router.use(express.static("public"));
 
-router.get("/",homePageController.getHomePage);
+router.get("/", homePageController.getHomePage);
 
 module.exports = router;
