@@ -25,7 +25,8 @@ const chatRouter = require("./router/chatRouter");
 
 const User = require("./models/userModel");
 const Chat = require("./models/chatModel");
-User.hasMany(Chat, { onDelete: "CASCADE", hooks: true });
+
+User.hasMany(Chat);
 Chat.belongsTo(User);
 
 app.use(express.static("public"));
@@ -46,5 +47,4 @@ sequelize
     console.log("server started at port 3000");
   })
   .catch((err) => console.log(err));
-
 

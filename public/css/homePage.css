@@ -6,6 +6,13 @@ html {
   /* background: -webkit-linear-gradient(to right, #dcd6f7, #95a1d5);
   background: linear-gradient(to right, #dcd6f7, #95a1d6); */
 }
+#chatList {
+  list-style-type: none;
+  padding: 0;
+}
+#chatList li {
+  margin-bottom: 10px;
+}
 /* f4eeff
 dcd6f7
 424874
@@ -147,6 +154,10 @@ a6b1e1 */
   cursor: pointer;
   margin-right: 20px;
 }
+.msg_cotainer, .msg_cotainer_send {
+  color: white;
+}
+
 .msg_cotainer {
   margin-top: auto;
   margin-bottom: auto;

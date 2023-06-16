@@ -3,11 +3,9 @@ const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sequelize = require("../util/database");
-
 function generateAccessToken(id, email) {	
     return jwt.sign({ userId: id, email: email }, process.env.TOKEN);	
 }
-
 const getLoginPage = async (req, res, next) => {
     try {
       res.sendFile(path.join(__dirname, "../", "public", "views", "login.html"));
@@ -15,7 +13,6 @@ const getLoginPage = async (req, res, next) => {
       console.log(error);
     }
   };
-
 const postUserSignup = async (req, res, next) => {
     try {
       const name = req.body.name;
@@ -51,7 +48,6 @@ const postUserSignup = async (req, res, next) => {
       return res.status(500).send("Internal Server Error");
     }
   };
-
   const postUserLogin = async (req, res, next) => {
     try {
       const email = req.body.loginEmail;
@@ -75,7 +71,7 @@ const postUserSignup = async (req, res, next) => {
       return res.status(500).json({ message: "Internal Server Error" });
     }
   };
- 
+
 
 module.exports = {
     postUserSignup,
