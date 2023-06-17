@@ -22,20 +22,21 @@ exports.getMessages = async (req, res, next) => {
     const user = req.user;
     const messages = await Chat.findAll({
       where: { userId: user.id },
-      include: [{ model: User, as: 'user' }]
+      order: [["createdAt", "DESC"]],
+      limit: 10, // Fetch only the 10 most recent messages
+      include: [{ model: User, as: "user" }],
     });
-    
 
     const formattedMessages = messages.map((message) => ({
       name: message.user.name,
-      message: message.message
+      message: message.message,
     }));
-    
 
-    res.status(200).json({ message: "Messages Fetching success", messages: formattedMessages });
+    res
+      .status(200)
+      .json({ message: "Messages Fetching success", messages: formattedMessages });
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: "Messages fetching error" });
   }
 };
-
