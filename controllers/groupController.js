@@ -7,6 +7,7 @@ const { Op } = require("sequelize");
 exports.createGroup = async (req, res, next) => {
   try {
     const groupName = req.body.groupName;
+    console.log("groupName:", groupName);
     const admin = req.user.name;
     const members = req.body.members;
 
