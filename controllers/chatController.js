@@ -3,7 +3,6 @@ const User = require("../models/userModel");
 const Chat = require("../models/chatModel");
 const Group = require("../models/groupModel");
 const sequelize = require("../util/database");
-const { Op } = require("sequelize");
 
 const io = require("socket.io")(5000, {
   cors: {

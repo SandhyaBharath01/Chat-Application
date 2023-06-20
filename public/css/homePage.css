@@ -3,59 +3,65 @@ html {
   height: 100%;
   margin: 0;
   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-  /* background: -webkit-linear-gradient(to right, #dcd6f7, #95a1d5);
-  background: linear-gradient(to right, #dcd6f7, #95a1d6); */
 }
+
 #chatList {
   list-style-type: none;
   padding: 0;
 }
+
 #chatList li {
   margin-bottom: 10px;
 }
-/* f4eeff
-dcd6f7
-424874
-a6b1e1 */
+
 .chat {
   margin-top: 40px;
   margin-bottom: 35px;
 }
+
 .card {
-  height: 90vh;
-  border-radius: 15px !important;
+  height: 88vh;
+  border-radius: 5px !important;
   background-color: #424874 !important;
-  color: #f5f6fa;
+  color: black;
 }
+
 .contacts_body {
   padding: 0.75rem 0 !important;
   overflow-y: auto;
   white-space: nowrap;
 }
+
 .msg_card_body {
   overflow-y: auto;
 }
+
 .card-header {
   border-radius: 15px 15px 0 0 !important;
   border-bottom: 0 !important;
 }
+
 .card-footer {
   border-radius: 0 0 15px 15px !important;
   border-top: 0 !important;
 }
+
 .container {
   align-content: center;
 }
+
 .search {
   border-radius: 15px 0 0 15px !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
   border: 0 !important;
   color: white !important;
 }
+
 .search:focus {
   box-shadow: none !important;
   outline: 0px !important;
 }
+
 .type_msg {
   background-color: rgba(0, 0, 0, 0.3) !important;
   border: 0 !important;
@@ -63,10 +69,12 @@ a6b1e1 */
   height: 60px !important;
   overflow-y: auto;
 }
+
 .type_msg:focus {
   box-shadow: none !important;
   outline: 0px !important;
 }
+
 .attach_btn {
   border-radius: 15px 0 0 15px !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
@@ -74,6 +82,7 @@ a6b1e1 */
   color: white !important;
   cursor: pointer;
 }
+
 .send_btn {
   border-radius: 0 15px 15px 0 !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
@@ -81,6 +90,7 @@ a6b1e1 */
   color: white !important;
   cursor: pointer;
 }
+
 .search_btn {
   border-radius: 0 15px 15px 0 !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
@@ -88,33 +98,40 @@ a6b1e1 */
   color: white !important;
   cursor: pointer;
 }
+
 .contacts {
   list-style: none;
   padding: 0;
 }
+
 .contacts li {
   width: 100% !important;
   padding: 5px 10px;
   margin-bottom: 15px !important;
 }
+
 .active {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
 .user_img {
   height: 70px;
   width: 70px;
   border: 1.5px solid #f5f6fa;
 }
+
 .user_img_msg {
   height: 40px;
   width: 40px;
   border: 1.5px solid #f5f6fa;
 }
+
 .img_cont {
   position: relative;
   height: 70px;
   width: 70px;
 }
+
 .img_cont_msg {
   height: 40px;
   width: 40px;
@@ -163,8 +180,9 @@ a6b1e1 */
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
-  border-radius: 25px;
-  background-color: #95a1d5;
+  border-radius: 5px;
+  background-color: #f7f6fc;
+  color: #0f0c29;
   padding: 10px;
   position: relative;
 }
@@ -172,8 +190,9 @@ a6b1e1 */
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 10px;
-  border-radius: 25px;
-  background-color: #dcd6f7;
+  border-radius: 5px;
+  background-color: #f7f6fc;
+  color: #0f0c29;
   padding: 10px;
   position: relative;
 }
