@@ -8,7 +8,7 @@ const fs = require("fs");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "*",
+    origin: "http://ec2-16-170-228-25.eu-north-1.compute.amazonaws.com:3000",
   })
 );
 
