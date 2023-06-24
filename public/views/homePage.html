@@ -1,11 +1,3 @@
-<link
-  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-  rel="stylesheet"
-  id="bootstrap-css"
-/>
-<link rel="stylesheet" href="/css/homePage.css" />
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,6 +25,10 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"
     ></script>
+    <link
+      rel="stylesheet"
+      href="/css/homePage.css"
+    />
   </head>
   <body>
     <div id="groupList">
@@ -100,10 +96,9 @@
             <div class="card-footer">
               <div class="input-group">
                 <div class="input-group-append">
-                  <span class="input-group-text attach_btn"
-                    ><i class="fas fa-paperclip"></i
-                  ></span>
+                  <label for="fileUploadInput" class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></label>
                 </div>
+                <input type="file" id="fileUploadInput" class="form-control" style="display: none;" />
                 <textarea
                   id="messageTextArea"
                   class="form-control type_msg"
@@ -120,17 +115,18 @@
         </div>
       </div>
     </div>
-  </body>
-  <script>
-    $(document).ready(function () {
-      $("#action_menu_btn").click(function () {
-        $(".action_menu").toggle();
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.1.3.min.js"></script>
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script src="/js/group.js"></script>
+    <script src="/js/chat.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#action_menu_btn").click(function () {
+          $(".action_menu").toggle();
+        });
       });
-    });
-  </script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://cdn.socket.io/socket.io-3.1.3.min.js"></script>
-  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
-  <script src="/js/group.js"></script>
-  <script src="/js/chat.js"></script>
+    </script>
+  </body>
 </html>

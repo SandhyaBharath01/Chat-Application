@@ -143,9 +143,57 @@ async function getMessages() {
   });
 }
 
+const fileInput = document.getElementById("fileUploadInput");
+
+function uploadFile(file) {
+  var formData = new FormData();
+  formData.append("file", file);
+  const token = localStorage.getItem("token");
+
+  // Send the file to the server using axios or any other AJAX library
+  axios
+    .post(
+      "/chat/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data", 
+          Authorization: token,
+        },
+      }
+    )
+    .then(function (response) {
+      // File uploaded successfully
+      var fileUrl = response.data.fileUrl;
+      var fileName = response.data.fileName;
+
+      // Send the file information to the server for storing in the database
+      axios
+        .post("/store-file", { fileName: fileName, fileUrl: fileUrl })
+        .then(function (response) {
+          // Handle the response from the server
+          console.log("File stored successfully.");
+        })
+        .catch(function (error) {
+          console.log("Error storing file:", error);
+        });
+    })
+    .catch(function (error) {
+      console.log("Error uploading file:", error);
+    });
+}
+
+// Handle file upload event
+document.getElementById("fileUploadInput").onchange = function (e) {
+  var file = e.target.files[0];
+  uploadFile(file);
+};
+
+
 messageSendBtn.addEventListener("click", messageSend);
 uiGroup.addEventListener("click", activeGroup);
 document.addEventListener("DOMContentLoaded", () => {
   localStorage.setItem("groupName", "");
   localStorage.setItem("chats", JSON.stringify([]));
 });
+
