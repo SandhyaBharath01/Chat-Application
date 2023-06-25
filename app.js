@@ -20,6 +20,7 @@ const sequelize = require("./util/database");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "uploads")));
 
 //Router
 const userRouter = require("./router/userRouter");
@@ -55,6 +56,7 @@ app.use("/homePage", homePageRouter);
 app.use("/chat", chatRouter);
 
 app.use("/group", groupRouter);
+
 
 sequelize
   .sync({ force: true })

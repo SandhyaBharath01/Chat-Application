@@ -37,26 +37,33 @@ async function messageSend() {
         member.remove();
       });
     }
-    const message = messageTextArea.value;
-    const token = localStorage.getItem("token");
-    const groupName = localStorage.getItem("groupName");
-    if (!groupName || groupName == "") {
-      return alert("Select group to send the message");
+
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      uploadFile(file); 
+    } else {
+      const message = messageTextArea.value;
+      const token = localStorage.getItem("token");
+      const groupName = localStorage.getItem("groupName");
+      if (!groupName || groupName == "") {
+        return alert("Select group to send the message");
+      }
+      const res = await axios.post(
+        `http://localhost:3000/chat/sendMessage/`,
+        {
+          message: message,
+          groupName: groupName,
+        },
+        { headers: { Authorization: token } }
+      );
+      messageTextArea.value = "";
+      getMessages();
     }
-    const res = await axios.post(
-      `http://localhost:3000/chat/sendMessage/`,
-      {
-        message: message,
-        groupName: groupName,
-      },
-      { headers: { Authorization: token } }
-    );
-    messageTextArea.value = "";
-    getMessages();
   } catch (error) {
     console.log("something went wrong");
   }
 }
+
 
 function decodeToken(token) {
   const base64Url = token.split(".")[1];
@@ -141,7 +148,73 @@ async function getMessages() {
       }
     });
   });
+
 }
+
+
+const fileInput = document.getElementById("fileUploadInput");
+
+// Function to upload a file
+function uploadFile(file) {
+  var formData = new FormData();
+  formData.append("file", file);
+  const token = localStorage.getItem("token");
+
+  axios
+    .post(
+      "http://localhost:3000/chat/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: token,
+        },
+      }
+    )
+    .then(function (response) {
+      // File uploaded successfully
+      const fileUrl = response.data.fileUrl;
+      const fileName = response.data.fileName;
+      sendMessageWithFile(fileUrl, fileName);
+    })
+    .catch(function (error) {
+      console.log("Error uploading file:", error);
+    });
+}
+
+// Function to send a message with file
+async function sendMessageWithFile(fileUrl, fileName) {
+  try {
+    const message = messageTextArea.value;
+    const token = localStorage.getItem("token");
+    const groupName = localStorage.getItem("groupName");
+    if (!groupName || groupName === "") {
+      return alert("Select a group to send the message");
+    }
+    const res = await axios.post(
+      "http://localhost:3000/chat/sendMessage/",
+      {
+        message: message,
+        groupName: groupName,
+        fileUrl: fileUrl,
+        fileName: fileName,
+      },
+      { headers: { Authorization: token } }
+    );
+    messageTextArea.value = "";
+    getMessages();
+  } catch (error) {
+    console.log("Something went wrong");
+  }
+}
+
+
+// Handle file upload event
+document.getElementById("fileUploadInput").onchange = function (e) {
+  var file = e.target.files[0];
+  uploadFile(file);
+};
+
 
 messageSendBtn.addEventListener("click", messageSend);
 uiGroup.addEventListener("click", activeGroup);
@@ -149,3 +222,4 @@ document.addEventListener("DOMContentLoaded", () => {
   localStorage.setItem("groupName", "");
   localStorage.setItem("chats", JSON.stringify([]));
 });
+

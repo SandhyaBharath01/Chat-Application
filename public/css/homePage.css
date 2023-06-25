@@ -186,6 +186,40 @@ html {
   padding: 10px;
   position: relative;
 }
+.sent {
+  justify-content: flex-end;
+}
+
+.received {
+  justify-content: flex-start;
+}
+
+.msg_cotainer_send,
+.msg_cotainer {
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.msg_cotainer_send {
+  background-color: #007bff;
+  color: white;
+}
+
+.msg_cotainer {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.uploaded-image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+
 .msg_cotainer_send {
   margin-top: auto;
   margin-bottom: auto;
