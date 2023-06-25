@@ -148,9 +148,7 @@ async function getMessages() {
       }
     });
   });
-
 }
-
 
 const fileInput = document.getElementById("fileUploadInput");
 
