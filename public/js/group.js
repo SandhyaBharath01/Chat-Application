@@ -103,7 +103,7 @@ async function deleteFromGroup() {
     let userInput;
     while (userInput !== "done") {
       userInput = prompt(
-        `Enter the email Id of Users to Add! Please Enter Valid Email Id Otherwise User will not get Added. Type "done" when you finished!`
+        `Enter the email Id of Users to Delete! Please Enter Valid Email Id Otherwise User will not get Deleted. Type "done" when you finished!`
       );
       if (userInput !== "done") {
         members.push(userInput);

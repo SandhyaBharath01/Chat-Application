@@ -173,6 +173,7 @@ html {
   margin-right: 20px;
 }
 .msg_cotainer, .msg_cotainer_send {
+  border-radius: 5px;
   color: white;
 }
 
@@ -208,7 +209,8 @@ html {
 }
 
 .msg_cotainer {
-  background-color: #f2f2f2;
+  background-color: #f7f6fc;
+  border-radius: 5px;
   color: black;
 }
 

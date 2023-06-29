@@ -57,6 +57,8 @@ app.use("/chat", chatRouter);
 
 app.use("/group", groupRouter);
 
+const job = require("./jobs/cron");
+job.start();
 
 sequelize
   

@@ -1,4 +1,3 @@
-const path = require("path");
 const User = require("../models/userModel");
 const Chat = require("../models/chatModel");
 const Group = require("../models/groupModel");
@@ -60,7 +59,7 @@ exports.getMessages = async (req, res, next) => {
     const messages = await Chat.findAll({
       where: { userId: user.id },
       order: [["createdAt", "DESC"]],
-      limit: 10, // Fetch only the 10 most recent messages
+      limit: 10, 
       include: [{ model: User, as: "user" }],
     });
 
@@ -79,7 +78,6 @@ exports.getMessages = async (req, res, next) => {
 };
 
 
-// Create a multer storage instance
 // Create a multer storage instance
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -122,7 +120,7 @@ exports.uploadFile = async (req, res, next) => {
       // Set the S3 parameters
       const params = {
         Bucket: 'fullstackexpensetracker',
-        Key: `${req.user.id}Expense/${new Date().getTime()}_${file.originalname}`, // Specify a unique file name for each file
+        Key: `${req.user.id}Expense/${new Date().getTime()}_${file.originalname}`,
         Body: fileContent,
         ACL: "public-read",
       };

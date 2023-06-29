@@ -2,9 +2,6 @@ const path = require("path");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const sequelize = require("../util/database");
-const Sib = require("sib-api-v3-sdk");
-const { Op } = require("sequelize");
 
 function generateAccessToken(id, email) {
   return jwt.sign({ userId: id, email: email }, process.env.TOKEN);
@@ -70,7 +67,7 @@ const postUserLogin = async (req, res, next) => {
           if (result == true) {
             return res.status(200).json({
               success: true,
-              message: "Login Successful!",
+              message: "Login Successfull!",
               token: generateAccessToken(user.id, user.email),
             });
           } else {
